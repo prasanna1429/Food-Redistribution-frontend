@@ -1,1 +1,249 @@
-<p>home works!</p>
+<div class="home-page">
+  <nav class="navbar">
+    <div class="brand">
+      <div class="brand-icon">♥</div>
+      <div>
+        <h2>FoodBridge</h2>
+        <p>Share Food. Share Hope.</p>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a (click)="scrollTo('home')"class="active">Home</a>
+      <a (click)="scrollTo('about')">About Us</a>
+      <a (click)="scrollTo('how-it-works')">How It Works</a>
+      <a (click)="scrollTo('donations')">Donations</a>
+      <a (click)="scrollTo('ngos')">NGOs</a>
+      <a (click)="scrollTo('contact')">Contact</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="btn outline" routerLink="/login">Login</button>
+      <button class="btn solid" routerLink="/register">Register</button>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Good Food<br />Can <span>Change Lives</span></h1>
+      <p>Donate surplus food and help NGOs serve those who need it the most.</p>
+
+      <div class="hero-points">
+        <div class="point">
+          <div class="point-icon">🌱</div>
+          <div>
+            <h4>Reduce Food Waste</h4>
+            <p>Turn extra food into meaningful support.</p>
+          </div>
+        </div>
+
+        <div class="point">
+          <div class="point-icon">👥</div>
+          <div>
+            <h4>Help Communities</h4>
+            <p>Ensure good meals reach those in need.</p>
+          </div>
+        </div>
+
+        <div class="point">
+          <div class="point-icon">🌍</div>
+          <div>
+            <h4>Better Tomorrow</h4>
+            <p>Together, we build a hunger-free world.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-image-wrap">
+      <img src="foodbridge-hero.png" alt="FoodBridge food donation" />
+
+      <div class="floating-card top-card">
+        <strong>12,000+</strong>
+        <span>Change Makers</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats" id="about">
+    <div class="stat">
+      <div class="stat-icon">🍲</div>
+      <h3>15,600+</h3>
+      <p>Meals Donated</p>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">👥</div>
+      <h3>780+</h3>
+      <p>NGOs Supported</p>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">😊</div>
+      <h3>21,300+</h3>
+      <p>Happy Beneficiaries</p>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">🌍</div>
+      <h3>50+</h3>
+      <p>Cities Covered</p>
+    </div>
+  </section>
+
+  <section class="section" id="how-it-works">
+    <h2 class="section-title">How It Works</h2>
+
+    <div class="steps">
+      <div class="step">
+        <span>1</span>
+        <div class="step-icon">🎁</div>
+        <h4>Post Food</h4>
+        <p>Donors list surplus food available for donation.</p>
+      </div>
+
+      <div class="step">
+        <span>2</span>
+        <div class="step-icon">👤</div>
+        <h4>NGO Requests</h4>
+        <p>Nearby NGOs find and request the food.</p>
+      </div>
+
+      <div class="step">
+        <span>3</span>
+        <div class="step-icon">🚚</div>
+        <h4>Pickup</h4>
+        <p>Food is picked up safely by the NGO.</p>
+      </div>
+
+      <div class="step">
+        <span>4</span>
+        <div class="step-icon">✅</div>
+        <h4>Donation Complete</h4>
+        <p>Food reaches those who need it most.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="ngos">
+    <div class="feature">
+      <span>🛡️</span>
+      <div>
+        <h4>Verified NGOs</h4>
+        <p>All NGOs are verified and trusted.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <span>📍</span>
+      <div>
+        <h4>Real-time Tracking</h4>
+        <p>Track your donation in real-time.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <span>🔒</span>
+      <div>
+        <h4>Secure Platform</h4>
+        <p>Your data and donations are safe.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <span>♻️</span>
+      <div>
+        <h4>Food Waste Reduction</h4>
+        <p>We ensure no good food goes to waste.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <span>👥</span>
+      <div>
+        <h4>Community Impact</h4>
+        <p>Together we create a better society.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section testimonials-section" id="donations">
+    <h2 class="section-title">What People Say</h2>
+
+    <div class="testimonials">
+      <div class="testimonial" *ngFor="let testimonial of visibleTestimonials">
+        <div class="quote">“</div>
+
+        <div class="testimonial-text">
+          <p>{{ testimonial.message }}</p>
+          <strong>- {{ testimonial.name }}</strong>
+        </div>
+
+        <img [src]="testimonial.image" [alt]="testimonial.name" />
+      </div>
+    </div>
+
+    <div class="testimonial-dots">
+      <button
+        *ngFor="let slide of testimonialSlides; let i = index"
+        [class.active]="i === activeTestimonialSlide"
+        (click)="setTestimonialSlide(i)"
+        type="button"
+        aria-label="Show testimonial slide">
+      </button>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div>
+      <h2>Ready to Make a Difference?</h2>
+      <p>Join hundreds of donors and NGOs in bringing smiles and hope to those who need it.</p>
+    </div>
+
+    <button>Start Donating ♥</button>
+  </section>
+
+  <footer class="footer" id="contact">
+    <div>
+      <div class="brand footer-brand">
+        <div class="brand-icon">♥</div>
+        <div>
+          <h2>FoodBridge</h2>
+          <p>Share Food. Share Hope.</p>
+        </div>
+      </div>
+      <p class="footer-text">Connecting surplus food with those who need it the most.</p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+      <a>Home</a>
+      <a>About Us</a>
+      <a>How It Works</a>
+      <a>Donations</a>
+    </div>
+
+    <div>
+      <h4>For Donors</h4>
+      <a>Post Food</a>
+      <a>My Donations</a>
+      <a>Track Donation</a>
+      <a>Donor Guidelines</a>
+    </div>
+
+    <div>
+      <h4>For NGOs</h4>
+      <a>Register NGO</a>
+      <a>Find Donations</a>
+      <a>My Requests</a>
+      <a>NGO Guidelines</a>
+    </div>
+
+    <div>
+      <h4>Contact Us</h4>
+      <p>📍 123, Green Street, Coimbatore</p>
+      <p>📞 +91 98765 43210</p>
+      <p>✉ support&#64;foodbridge.com</p>
+    </div>
+  </footer>
+</div>
