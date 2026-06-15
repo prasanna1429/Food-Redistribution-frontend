@@ -1,1 +1,63 @@
-<p>register works!</p>
+<div class="register-container">
+    <div class="register-card">
+        <h2>Join FoodBridge</h2>
+        <p>Sign up and start making an impact with FoodBridge</p>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <input type="text" formControlName="fullName" placeholder="Full Name" />
+                <small *ngIf="submitted && f.fullName.errors">Full name is required</small>
+            </div>
+
+            <div class="form-group">
+                <input type="email" formControlName="email" placeholder="Email Address" />
+                <small *ngIf="submitted && f.email.errors">Valid email is required</small>
+            </div>
+
+            <div class="form-group">
+                <input type="tel" formControlName="phone" placeholder="Phone Number" />
+                <small *ngIf="submitted && f.phone.errors">Phone number is required</small>
+            </div>
+
+            <div class="form-group">
+                <select formControlName="role">
+                    <option value="">I am a...</option>
+                    <option value="donor">Donor</option>
+                    <option value="ngo">NGO</option>
+                    <option value="volunteer">Volunteer</option>
+                </select>
+                <small *ngIf="submitted && f.role.errors">Please select a role</small>
+            </div>
+
+            <div class="form-group">
+                <input type="password" formControlName="password" placeholder="Password" />
+                <small *ngIf="submitted && f.password.errors">Password is required</small>
+            </div>
+
+            <div class="form-group">
+                <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" />
+                <small *ngIf="submitted && f.confirmPassword.errors">Passwords must match</small>
+            </div>
+
+    <div class="checkbox-group">
+        <input type="checkbox" id="agree" formControlName="agree" />
+        <label for="agree">I agree to the Terms & Conditions and Privacy Policy</label>
+    </div>
+
+
+            <button type="submit" class="btn-primary">Create Account</button>
+        </form>
+            
+
+        <div class="social-login">
+             <button class="google-btn">
+                <i class="fab fa-google"></i> Continue with Google</button>
+           <button class="facebook-btn">
+                <i class="fab fa-facebook-f"></i> Continue with Facebook</button>
+        </div>
+
+        <p class="login-link">Already have an account? <a href="/login">Login Now</a></p>
+    </div>
+</div>
+
+
