@@ -1,1 +1,212 @@
-<p>login works!</p>
+<div class="login-container">
+
+  <!-- LEFT SIDE -->
+  <div class="left-panel">
+
+    <img
+      src="quote-decoration.png"
+      alt="Decoration"
+      class="quote-decoration">
+
+    <div class="left-content">
+
+      <div class="quote-icon">❝</div>
+
+      <h1>
+        Every meal we share today,<br>
+        <span>feeds hope.</span>
+      </h1>
+
+      <p>
+        Together, we can make a difference in someone's life.
+      </p>
+
+      <h3>– Food Bridge</h3>
+
+    </div>
+
+    <img
+      src="donation-box.png"
+      alt="Donation Box"
+      class="donation-box">
+
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="right-panel">
+
+    <img
+      src="login-banner.png"
+      alt="Login Banner"
+      class="login-top">
+
+    <h1 class="welcome-title">
+      Welcome Back! 👋
+    </h1>
+
+    <p class="subtitle">
+      Login to continue your journey of sharing and caring.
+    </p>
+
+    <form>
+
+      <!-- EMAIL -->
+      <label>Email Address</label>
+
+      <div class="input-box">
+
+        <input
+          type="email"
+          placeholder="Enter your email">
+
+      </div>
+
+      <!-- PASSWORD -->
+      <label>Password</label>
+
+      <div class="input-box">
+
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          placeholder="Enter your password">
+
+        <img
+          class="eye-icon"
+          [src]="showPassword ? 'eye-open.png' : 'eye-closed.png'"
+          (click)="togglePassword()"
+          alt="toggle">
+
+      </div>
+
+      <!-- OPTIONS -->
+      <div class="options">
+
+        <label class="remember">
+
+          <input type="checkbox">
+
+          Remember me
+
+        </label>
+
+        <a href="#">
+          Forgot password?
+        </a>
+
+      </div>
+
+      <!-- LOGIN BUTTON -->
+      <button
+        type="submit"
+        class="login-btn">
+
+        Login ➜
+
+      </button>
+
+    </form>
+
+    <!-- DIVIDER -->
+    <div class="divider">
+
+      <span>
+        or continue with
+      </span>
+
+    </div>
+
+    <!-- SOCIAL BUTTONS -->
+    <div class="social-buttons">
+
+      <button class="google-btn">
+
+        <img
+          src="google.png"
+          alt="Google Logo">
+
+        Google
+
+      </button>
+
+      <button class="facebook-btn">
+
+        <img
+          src="facebook.png"
+          alt="Facebook Logo">
+
+        Facebook
+
+      </button>
+
+    </div>
+
+    <!-- REGISTER -->
+    <div class="register-link">
+
+      Don't have an account?
+
+      <a routerLink="/register">
+
+        Register here
+
+      </a>
+
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features-card">
+
+      <div class="feature">
+
+        <div class="feature-icon">
+          🛡️
+        </div>
+
+        <h4>
+          Secure & Trusted
+        </h4>
+
+        <p>
+          Your data is safe with us
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <div class="feature-icon">
+          🚚
+        </div>
+
+        <h4>
+          Real-time Tracking
+        </h4>
+
+        <p>
+          Track donations in real-time
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <div class="feature-icon">
+          💚
+        </div>
+
+        <h4>
+          Make Impact
+        </h4>
+
+        <p>
+          Your small help can change someone's life
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+  
+
+</div>
