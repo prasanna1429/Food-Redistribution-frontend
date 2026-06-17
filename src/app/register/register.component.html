@@ -1,63 +1,238 @@
-<div class="register-container">
-    <div class="register-card">
-        <h2>Join FoodBridge</h2>
-        <p>Sign up and start making an impact with FoodBridge</p>
+<div class="card">
 
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <input type="text" formControlName="fullName" placeholder="Full Name" />
-                <small *ngIf="submitted && f.fullName.errors">Full name is required</small>
-            </div>
-
-            <div class="form-group">
-                <input type="email" formControlName="email" placeholder="Email Address" />
-                <small *ngIf="submitted && f.email.errors">Valid email is required</small>
-            </div>
-
-            <div class="form-group">
-                <input type="tel" formControlName="phone" placeholder="Phone Number" />
-                <small *ngIf="submitted && f.phone.errors">Phone number is required</small>
-            </div>
-
-            <div class="form-group">
-                <select formControlName="role">
-                    <option value="">I am a...</option>
-                    <option value="donor">Donor</option>
-                    <option value="ngo">NGO</option>
-                    <option value="volunteer">Volunteer</option>
-                </select>
-                <small *ngIf="submitted && f.role.errors">Please select a role</small>
-            </div>
-
-            <div class="form-group">
-                <input type="password" formControlName="password" placeholder="Password" />
-                <small *ngIf="submitted && f.password.errors">Password is required</small>
-            </div>
-
-            <div class="form-group">
-                <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" />
-                <small *ngIf="submitted && f.confirmPassword.errors">Passwords must match</small>
-            </div>
-
-    <div class="checkbox-group">
-        <input type="checkbox" id="agree" formControlName="agree" />
-        <label for="agree">I agree to the Terms & Conditions and Privacy Policy</label>
+    <!-- LEFT PANEL -->
+    <div class="left">
+        <img src="/foodbrige-split.png" alt="Food Bridge" class="left-img" />
     </div>
 
+    <!-- RIGHT PANEL -->
+    <div class="right">
 
-            <button type="submit" class="btn-primary">Create Account</button>
-        </form>
-            
-
-        <div class="social-login">
-             <button class="google-btn">
-                <i class="fab fa-google"></i> Continue with Google</button>
-           <button class="facebook-btn">
-                <i class="fab fa-facebook-f"></i> Continue with Facebook</button>
+        <div class="brand-icon">
+            <div class="brand-leaves">
+                <div class="brand-leaf l"></div>
+                <div class="brand-leaf r"></div>
+            </div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2e8b1a" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <path d="M8 12h8M12 8v8" />
+            </svg>
         </div>
 
-        <p class="login-link">Already have an account? <a href="/login">Login Now</a></p>
+        <h2 class="form-title">Create Your Account <span class="sprout">🌱</span></h2>
+        <p class="form-sub">Join us and be a part of the change.</p>
+        <div class="title-underline"></div>
+
+        <form class="form-grid" [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+
+            <!-- Full Name -->
+            <div class="field">
+                <label for="fullname">Full Name</label>
+                <div class="input-wrap" [class.input-error]="submitted && f['fullName'].errors">
+                    <span class="icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="4" />
+                            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                        </svg>
+                    </span>
+                    <input id="fullname" type="text" placeholder="Enter your full name" formControlName="fullName" />
+                </div>
+                <span class="error-msg" *ngIf="submitted && f['fullName'].errors?.['required']">Full name is
+                    required.</span>
+            </div>
+
+            <!-- Email -->
+            <div class="field">
+                <label for="email">Email Address</label>
+                <div class="input-wrap" [class.input-error]="submitted && f['email'].errors">
+                    <span class="icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <path d="M2 8l10 6 10-6" />
+                        </svg>
+                    </span>
+                    <input id="email" type="email" placeholder="Enter your email" formControlName="email" />
+                </div>
+                <span class="error-msg" *ngIf="submitted && f['email'].errors?.['required']">Email is required.</span>
+                <span class="error-msg" *ngIf="submitted && f['email'].errors?.['email']">Enter a valid email
+                    address.</span>
+            </div>
+            <!-- Register As -->
+            <div class="field">
+                <label for="role">Register As</label>
+                <div class="input-wrap" [class.input-error]="submitted && f['role'].errors">
+                    <span class="icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </span>
+                    <select id="role" formControlName="role">
+                        <option value="">Select your role</option>
+                        <option value="donor">Donor</option>
+                        <option value="ngo">NGO</option>
+                        <option value="volunteer">Volunteer</option>
+                    </select>
+                </div>
+                <span class="error-msg" *ngIf="submitted && f['role'].errors?.['required']">
+                    Please select a role.
+                </span>
+            </div>
+
+
+            <!-- Phone -->
+            <div class="field">
+                <label for="phone">Phone Number</label>
+                <div class="input-wrap" [class.input-error]="submitted && f['phone'].errors">
+                    <span class="icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013.09 4.18 2 2 0 015.09 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11l-1.27 1.27a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                        </svg>
+                    </span>
+                    <input id="phone" type="tel" placeholder="Enter your phone number" formControlName="phone" />
+                </div>
+                <span class="error-msg" *ngIf="submitted && f['phone'].errors?.['required']">Phone number is
+                    required.</span>
+            </div>
+
+            <!-- Password -->
+            <div class="field">
+                <label for="password">Password</label>
+                <div class="input-wrap" [class.input-error]="submitted && f['password'].errors">
+                    <span class="icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" />
+                            <path d="M7 11V7a5 5 0 0110 0v4" />
+                        </svg>
+                    </span>
+                    <input id="password" [type]="showPassword ? 'text' : 'password'" placeholder="Create a password"
+                        formControlName="password" />
+                    <span class="eye" (click)="showPassword = !showPassword"
+                        [style.color]="showPassword ? '#2e8b1a' : '#aaa'">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </span>
+                </div>
+                <span class="error-msg" *ngIf="submitted && f['password'].errors?.['required']">Password is
+                    required.</span>
+                <span class="error-msg" *ngIf="submitted && f['password'].errors?.['minlength']">Password must be at
+                    least 6 characters.</span>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="field">
+                <label for="confirm">Confirm Password</label>
+                <div class="input-wrap"
+                    [class.input-error]="submitted && (f['confirmPassword'].errors || registerForm.errors?.['mismatch'])">
+                    <span class="icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" />
+                            <path d="M7 11V7a5 5 0 0110 0v4" />
+                        </svg>
+                    </span>
+                    <input id="confirm" [type]="showConfirm ? 'text' : 'password'" placeholder="Confirm your password"
+                        formControlName="confirmPassword" />
+                    <span class="eye" (click)="showConfirm = !showConfirm"
+                        [style.color]="showConfirm ? '#2e8b1a' : '#aaa'">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </span>
+                </div>
+                <span class="error-msg" *ngIf="submitted && f['confirmPassword'].errors?.['required']">Please confirm
+                    your password.</span>
+                <span class="error-msg"
+                    *ngIf="submitted && !f['confirmPassword'].errors?.['required'] && registerForm.errors?.['mismatch']">Passwords
+                    do not match.</span>
+            </div>
+
+            <!-- Terms -->
+            <div class="field full">
+                <div class="checkbox-row">
+                    <input type="checkbox" id="terms" formControlName="agree" />
+                    <label for="terms" class="terms-label">
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+                <span class="error-msg" *ngIf="submitted && f['agree'].errors?.['required']">You must accept the terms
+                    to continue.</span>
+            </div>
+
+            <!-- Register Button -->
+            <div class="field full">
+                <button type="submit" class="btn-register">
+                    Register
+                    <div class="arrow-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Or -->
+            <div class="field full">
+                <div class="or-row">or register with</div>
+            </div>
+
+            <!-- Social Buttons -->
+            <div class="field full">
+                <div class="social-row">
+                    <button type="button" class="btn-social">
+                        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                                fill="#4285F4" />
+                            <path
+                                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                                fill="#34A853" />
+                            <path
+                                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                                fill="#FBBC05" />
+                            <path
+                                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                                fill="#EA4335" />
+                        </svg>
+                        Google
+                    </button>
+                    <button type="button" class="btn-social">
+                        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                                fill="#1877F2" />
+                        </svg>
+                        Facebook
+                    </button>
+                </div>
+            </div>
+
+            <!-- Login Link -->
+            <div class="field full login-center">
+                <div class="login-row">
+                    Already have an account?
+                    <a routerLink="/login">
+                        Login here
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </form>
     </div>
 </div>
-
-

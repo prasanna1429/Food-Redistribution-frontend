@@ -1,96 +1,396 @@
+/* ── GOOGLE FONTS ──
+   Add this to your index.html <head>:
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
+*/
 
-.register-container {
+/* ── HOST ── */
+:host {
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    background: #e8f0e4;
+    min-height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── CARD ── */
+.card {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.13);
+    background: #fff;
+}
+
+/* ══════════════════════════════
+   LEFT PANEL — image fills the panel
+══════════════════════════════ */
+.left {
+    flex: 0 0 44%;
+    position: relative;
+    overflow: hidden;
+}
+
+.left-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* ══════════════════════════════
+   RIGHT PANEL
+══════════════════════════════ */
+.right {
+    flex: 1;
+    padding: 38px 44px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Brand icon */
+.brand-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1.5px solid #d4e8c8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    background: #fff;
+    position: relative;
+}
+
+.brand-icon svg {
+    width: 26px;
+    height: 26px;
+}
+
+.brand-leaves {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 3px;
+}
+
+.brand-leaf {
+    width: 10px;
+    height: 16px;
+    background: #5ab23a;
+    border-radius: 50% 0 50% 0;
+}
+
+.brand-leaf.r {
+    transform: rotate(25deg);
+}
+
+.brand-leaf.l {
+    transform: rotate(-25deg) scaleX(-1);
+}
+
+/* Titles */
+.form-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sprout {
+    font-size: 1.1rem;
+}
+
+.form-sub {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+.title-underline {
+    width: 44px;
+    height: 2.5px;
+    background: #2e8b1a;
+    border-radius: 2px;
+    margin-bottom: 24px;
+}
+
+/* Form grid */
+.form-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 16px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #222;
+}
+
+/* Input wrapper */
+.input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrap .icon {
+    position: absolute;
+    left: 12px;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrap input, .input-wrap select {
+    width: 100%;
+    padding: 10px 12px 10px 36px;
+    border: 1.5px solid #dde8d6;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-wrap input::placeholder {
+    color: #bbb;
+}
+
+.input-wrap input:focus {
+    border-color: #2e8b1a;
+}
+
+.input-wrap .eye {
+    position: absolute;
+    right: 12px;
+    color: #aaa;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+/* Validation error state */
+.input-error input {
+    border-color: #e53935 !important;
+}
+
+.error-msg {
+    font-size: 0.74rem;
+    color: #e53935;
+    margin-top: 2px;
+}
+
+/* Terms checkbox */
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: #555;
+    width: 100%;
+    margin-top: 2px;
+}
+
+.checkbox-row input[type=checkbox] {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    accent-color: #2e8b1a;
+    flex-shrink: 0;
+}
+
+.terms-label {
+    font-weight: 400 !important;
+    color: #555 !important;
+}
+
+.terms-label a {
+    color: #2e8b1a;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.terms-label a:hover {
+    text-decoration: underline;
+}
+
+/* Register button */
+.btn-register {
+    width: 100%;
+    padding: 13px 20px;
+    background: #2e8b1a;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 4px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn-register:hover {
+    background: #256815;
+}
+
+.btn-register:active {
+    transform: scale(0.99);
+}
+
+.arrow-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* OR divider */
+.or-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    font-size: 0.8rem;
+    color: #aaa;
+    margin: 4px 0;
+}
+
+.or-row::before,
+.or-row::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e8e8e8;
+}
+
+/* Social buttons */
+.social-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+}
+
+.btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.btn-social:hover {
+    border-color: #bbb;
+    background: #fafafa;
+}
+
+/* Login link */
+.login-center {
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f5f9f6;
+    margin-top: 2px;
 }
 
-.register-card {
-    background: #fff;
-    padding: 2rem 3rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    text-align: center;
-}
-
-h2 {
-    color: #2e7d32;
-    margin-bottom: 0.5rem;
-}
-
-p {
+.login-row {
+    font-size: 0.82rem;
     color: #555;
-    margin-bottom: 1.5rem;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-input,
-select {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-.btn-primary {
-    background-color: #2e7d32;
-    color: #fff;
-    border: none;
-    padding: 0.75rem;
-    width: 100%;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.btn-primary:hover {
-    background-color: #256628;
-}
-
-.social-login button {
-    margin: 0.5rem 0;
-    width: 100%;
-    border: none;
-    padding: 0.75rem;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.google-btn {
-    background-color:lightgray;
-    border: 1px solid #ccc;
-}
-
-.facebook-btn {
-    background-color: #3b5998;
-    color: #fff;
-}
-
-.login-link {
-    margin-top: 1rem;
-    color: #555;
-}
-.social-login i {
-    margin-right: 8px;
-}
-.checkbox-group {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    margin: 1rem 0;
+    gap: 6px;
 }
 
-.checkbox-group input[type="checkbox"] {
-    width: auto;
-    margin-right: 8px;
+.login-row a {
+    color: #2e8b1a;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 3px;
 }
 
-.checkbox-group label {
-    font-size: 0.9rem;
-    color: #444;
+.login-row a svg {
+    vertical-align: middle;
+}
+
+.login-row a:hover {
+    text-decoration: underline;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+    .card {
+        flex-direction: column;
+    }
+
+    .left {
+        flex: 0 0 auto;
+        height: 260px;
+    }
+
+    .right {
+        padding: 28px 22px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field.full {
+        grid-column: 1;
+    }
 }
