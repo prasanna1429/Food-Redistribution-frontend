@@ -62,7 +62,9 @@ export class RegisterComponent {
     };
 
     alert('Registration successful');
-    console.log('Registration successful', payload);
+    this.router.navigate(['/home']);
+    console.log('Registration successful', payload); 
+    
 
     // Uncomment and replace with your actual API call:
     // this.authService.register(payload).subscribe({
